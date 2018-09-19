@@ -9,6 +9,7 @@ extern keymap_config_t keymap_config;
 #define CTL_ESC CTL_T(KC_ESC)
 #define ALT_TAB ALT_T(KC_TAB)
 
+// http://www.keyboard-layout-editor.com/#/gists/144b278919b7b5a09d881c0791665199
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
@@ -39,3 +40,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case KC_QUOT:
+      if (record->event.pressed) {
+        // Do something when pressed
+      } else {
+        // Do something else when release
+      }
+      return false;
+    default:
+      return true;
+  }
+}
